@@ -117,15 +117,7 @@
 </dialog>
 
 <script>
-// Each work: title, artist, detail, r (aspect ratio), g (placeholder gradient), optional img (URL or data URI)
-var WORKS=[
- {title:"Untitled I",artist:"Sample artist 1",d:"Oil on canvas, 2024",r:"3/4",g:"linear-gradient(160deg,#2d3fd3,#8e9aff)"},
- {title:"Untitled II",artist:"Sample artist 2",d:"Tempera on board, 2023",r:"1/1",g:"linear-gradient(20deg,#c8553d,#f2c9a0)"},
- {title:"Landscape",artist:"Sample artist 3",d:"Acrylic on canvas, 2025",r:"4/5",g:"linear-gradient(200deg,#1f6f5c,#a8d5c2)"},
- {title:"Figure Study",artist:"Sample artist 4",d:"Ink on paper, 2022",r:"5/4",g:"linear-gradient(120deg,#6b3fa0,#e0b0ff)"},
- {title:"Still Life",artist:"Sample artist 5",d:"Mixed media, 2025",r:"2/3",g:"linear-gradient(180deg,#e0a526,#f7e3a1)"},
- {title:"Composition",artist:"Sample artist 6",d:"Oil on canvas, 2026",r:"1/1",g:"linear-gradient(60deg,#243b53,#7aa2c9)"}
-];
+// Gallery items are loaded from gallery.json.
 function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w.g;if(w.img)el.classList.add("has")}
 (function(){
   var PER=4,rows=[].slice.call(document.querySelectorAll("#exhibitions .ex")),pg=document.getElementById("pager"),cur=1,n=Math.max(5,Math.ceil(rows.length/PER));
@@ -169,10 +161,10 @@ function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w
   document.getElementById("exclose").onclick=function(){dlg.close()};
   dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
 })();
-paint(document.getElementById("heroart"),WORKS[0]);
+
 var heroArt=document.getElementById("heroart");heroArt.style.background="url('legacy.png') center/contain no-repeat";heroArt.classList.add("exhibition-poster");
 var wall=document.getElementById("wall"),dlg=document.getElementById("dlg");
-WORKS.forEach(function(w){
+fetch("gallery.json").then(function(r){if(!r.ok)throw new Error("Gallery data not found");return r.json()}).then(function(WORKS){WORKS.forEach(function(w){
   var b=document.createElement("button");b.type="button";b.className="work";
   b.innerHTML='<div class="frame"><div class="art"></div></div><div class="cap"><b></b><span></span></div>';
   var a=b.querySelector(".art");a.style.aspectRatio=w.r;paint(a,w);
@@ -186,6 +178,7 @@ WORKS.forEach(function(w){
   };
   wall.appendChild(b);
 });
+}).catch(function(){wall.textContent="Gallery works could not be loaded.";});
 document.getElementById("close").onclick=function(){dlg.close()};
 dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
 </script>
