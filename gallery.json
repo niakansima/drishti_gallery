@@ -1,8 +1,10 @@
-[
-  {"title":"Untitled I","artist":"Sample artist 1","d":"Oil on canvas, 2024","r":"3/4","g":"linear-gradient(160deg,#2d3fd3,#8e9aff)","img":""},
-  {"title":"Untitled II","artist":"Sample artist 2","d":"Tempera on board, 2023","r":"1/1","g":"linear-gradient(20deg,#c8553d,#f2c9a0)","img":""},
-  {"title":"Landscape","artist":"Sample artist 3","d":"Acrylic on canvas, 2025","r":"4/5","g":"linear-gradient(200deg,#1f6f5c,#a8d5c2)","img":""},
-  {"title":"Figure Study","artist":"Sample artist 4","d":"Ink on paper, 2022","r":"5/4","g":"linear-gradient(120deg,#6b3fa0,#e0b0ff)","img":""},
-  {"title":"Still Life","artist":"Sample artist 5","d":"Mixed media, 2025","r":"2/3","g":"linear-gradient(180deg,#e0a526,#f7e3a1)","img":""},
-  {"title":"Composition","artist":"Sample artist 6","d":"Oil on canvas, 2026","r":"1/1","g":"linear-gradient(60deg,#243b53,#7aa2c9)","img":""}
-]
+{
+  "works": [
+    {"title":"Untitled I","artist":"Sample artist 1","d":"Oil on canvas, 2024","r":"3/4","g":"linear-gradient(160deg,#2d3fd3,#8e9aff)","img":""},
+    {"title":"Untitled II","artist":"Sample artist 2","d":"Tempera on board, 2023","r":"1/1","g":"linear-gradient(20deg,#c8553d,#f2c9a0)","img":""},
+    {"title":"Landscape","artist":"Sample artist 3","d":"Acrylic on canvas, 2025","r":"4/5","g":"linear-gradient(200deg,#1f6f5c,#a8d5c2)","img":""},
+    {"title":"Figure Study","artist":"Sample artist 4","d":"Ink on paper, 2022","r":"5/4","g":"linear-gradient(120deg,#6b3fa0,#e0b0ff)","img":""},
+    {"title":"Still Life","artist":"Sample artist 5","d":"Mixed media, 2025","r":"2/3","g":"linear-gradient(180deg,#e0a526,#f7e3a1)","img":""},
+    {"title":"Composition","artist":"Sample artist 6","d":"Oil on canvas, 2026","r":"1/1","g":"linear-gradient(60deg,#243b53,#7aa2c9)","img":""}
+  ]
+}
