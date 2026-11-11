@@ -89,9 +89,8 @@
         <h2>Send us a message</h2>
         <p>Questions about an exhibition or a work? Write to us and we will reply as soon as we can.</p>
       </div>
-      <form id="msgform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact">
-        <p hidden><label>Leave this field empty<input name="bot-field"></label></p>
+      <form id="msgform" action="https://formspree.io/f/xrpqzjkn" method="POST">
+        <input type="text" name="_gotcha" style="display:none">
         <label>Your name<input id="mname" name="name" autocomplete="name" required></label>
         <label>Your email<input id="memail" name="email" type="email" autocomplete="email" required></label>
         <label>Message<textarea id="mtext" name="message" rows="5" required></textarea></label>
