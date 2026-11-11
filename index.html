@@ -147,7 +147,10 @@ function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w
     function open(){
       var title=r.querySelector("h3").textContent;
       var isLegacy=/^legacy$/i.test(title), isHandcraft=/^handcraft$/i.test(title);
-      art.style.background=isLegacy?'url("legacy.png") center/contain no-repeat':isHandcraft?'url("handcraft.png") center/contain no-repeat':"url('data:image/svg+xml,"+encodeURIComponent(t.s)+"') center/cover";
+      var exhibitImages={"Summer Collections":"Summer Collection.png","The Earthbound Divine":"The Earthbound Divine.png","Monsoon Reverie":"Monsoon Reverie.png","Comics":"comic.png","स्वर्णिम Swarnim":"स्वर्णिम Swarnim.png","Fragments of Light":"Fragments of Light.png"};
+      var exhibitFile=exhibitImages[title];
+      var exhibitPhoto=exhibitFile?'url("uploads/'+encodeURIComponent(exhibitFile)+'") center/contain no-repeat':null;
+      art.style.background=exhibitPhoto||(isLegacy?'url("legacy.png") center/contain no-repeat':isHandcraft?'url("handcraft.png") center/contain no-repeat':"url('data:image/svg+xml,"+encodeURIComponent(t.s)+"') center/cover");
       art.classList.toggle("exhibition-poster",isLegacy||isHandcraft);
       document.getElementById("extag").textContent=t.n;
       document.getElementById("extitle").textContent=r.querySelector("h3").textContent;
