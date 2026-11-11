@@ -1,52 +1,44 @@
 {
   "works": [
     {
-      "title": "Untitled I",
-      "artist": "Sample artist 1",
-      "d": "Oil on canvas, 2024",
-      "r": "3/4",
+      "title": "Political Cartoon Display",
+      "artist": "Artist not listed",
+      "d": "Gallery wall of framed political cartoons",
+      "r": "21/10",
       "g": "linear-gradient(160deg,#2d3fd3,#8e9aff)",
       "img": "/uploads/1.png"
     },
     {
-      "title": "Untitled II",
-      "artist": "Sample artist 2",
-      "d": "Tempera on board, 2023",
+      "title": "Gallery in Colour",
+      "artist": "Artist not listed",
+      "d": "Colourful paintings displayed in an art gallery",
       "r": "1/1",
       "g": "linear-gradient(20deg,#c8553d,#f2c9a0)",
-      "img": ""
+      "img": "/uploads/5.png"
     },
     {
-      "title": "Landscape",
-      "artist": "Sample artist 3",
-      "d": "Acrylic on canvas, 2025",
-      "r": "4/5",
+      "title": "Tree of Life",
+      "artist": "Artist not listed",
+      "d": "Folk art paintings featuring a tree motif",
+      "r": "4/3",
       "g": "linear-gradient(200deg,#1f6f5c,#a8d5c2)",
-      "img": ""
+      "img": "/uploads/4.png"
     },
     {
-      "title": "Figure Study",
-      "artist": "Sample artist 4",
-      "d": "Ink on paper, 2022",
-      "r": "5/4",
+      "title": "Visitors at the Exhibition",
+      "artist": "Artist not listed",
+      "d": "Visitors viewing contemporary artworks",
+      "r": "7/5",
       "g": "linear-gradient(120deg,#6b3fa0,#e0b0ff)",
-      "img": ""
+      "img": "/uploads/3.png"
     },
     {
-      "title": "Still Life",
-      "artist": "Sample artist 5",
-      "d": "Mixed media, 2025",
-      "r": "2/3",
+      "title": "Blue Figures",
+      "artist": "Artist not listed",
+      "d": "Blue figures in ornate traditional dress",
+      "r": "5/9",
       "g": "linear-gradient(180deg,#e0a526,#f7e3a1)",
-      "img": ""
-    },
-    {
-      "title": "Composition",
-      "artist": "Sample artist 6",
-      "d": "Oil on canvas, 2026",
-      "r": "1/1",
-      "g": "linear-gradient(60deg,#243b53,#7aa2c9)",
-      "img": ""
+      "img": "/uploads/2.png"
     }
   ]
 }
