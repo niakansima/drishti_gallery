@@ -1,0 +1,28 @@
+backend:
+  name: turbo-github
+  repo: niakansima/drishti_gallery
+  branch: main
+
+media_folder: uploads
+public_folder: /uploads
+
+collections:
+  - name: gallery
+    label: Featured works
+    files:
+      - name: featured_works
+        label: Featured works
+        file: gallery.json
+        format: json
+        fields:
+          - label: Works
+            name: works
+            widget: list
+            summary: '{{fields.title}} — {{fields.artist}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Artist, name: artist, widget: string }
+              - { label: Details, name: d, widget: string }
+              - { label: Image, name: img, widget: image, required: false }
+              - { label: Placeholder background, name: g, widget: string, required: false }
+              - { label: Aspect ratio, name: r, widget: string, default: '3/4' }
