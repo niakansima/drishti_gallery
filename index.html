@@ -169,11 +169,11 @@ fetch("gallery.json?v=5").then(function(r){if(!r.ok)throw new Error("Gallery dat
   b.innerHTML='<div class="frame"><div class="art"></div></div><div class="cap"><b></b><span></span></div>';
   var a=b.querySelector(".art");a.style.aspectRatio=w.r;paint(a,w);
   b.querySelector("b").textContent=w.title;
-  b.querySelector("span").textContent=w.artist;
+  var artist=b.querySelector("span");if(w.artist&&w.artist.trim()!=="Artist not listed")artist.textContent=w.artist;else artist.remove();
   b.onclick=function(){
     var d=document.getElementById("dart");d.className="art";d.style.aspectRatio=w.r;paint(d,w);
     document.getElementById("dt").textContent=w.title;
-    document.getElementById("dm").textContent=w.artist+", "+w.d;
+    document.getElementById("dm").textContent=((w.artist||"").trim()&&w.artist.trim()!=="Artist not listed"?w.artist.trim()+", ":"")+w.d;
     dlg.showModal();
   };
   wall.appendChild(b);
