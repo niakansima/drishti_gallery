@@ -164,7 +164,7 @@ function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w
 
 var heroArt=document.getElementById("heroart");heroArt.style.background="url('legacy.png') center/contain no-repeat";heroArt.classList.add("exhibition-poster");
 var wall=document.getElementById("wall"),dlg=document.getElementById("dlg");
-fetch("gallery.json").then(function(r){if(!r.ok)throw new Error("Gallery data not found");return r.json()}).then(function(WORKS){WORKS.forEach(function(w){
+fetch("gallery.json").then(function(r){if(!r.ok)throw new Error("Gallery data not found");return r.json()}).then(function(data){var WORKS=Array.isArray(data)?data:data.works;WORKS.forEach(function(w){
   var b=document.createElement("button");b.type="button";b.className="work";
   b.innerHTML='<div class="frame"><div class="art"></div></div><div class="cap"><b></b><span></span></div>';
   var a=b.querySelector(".art");a.style.aspectRatio=w.r;paint(a,w);
