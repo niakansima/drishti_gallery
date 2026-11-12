@@ -1,0 +1,164 @@
+/* Drishti Gallery: stylesheet
+   Palette: emerald and copper (light and dark)
+   To change the look, edit the variables in the first two blocks only. */
+
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap");
+
+/* ---------- Colours and fonts ---------- */
+:root {
+  /* light theme */
+  --bg: #edf1ee;      /* page background */
+  --ink: #12302a;     /* main text, deep emerald */
+  --mute: #55695f;    /* secondary text */
+  --line: #c5d2cb;    /* hairlines and borders */
+  --accent: #b5532c;  /* copper: links, dates, hover, focus */
+  --mat: #f9fbf9;     /* cards, frames, form fields */
+
+  /* fonts */
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* dark theme: follows the visitor's device unless data-theme="light" is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a16;
+    --ink: #e5ece8;
+    --mute: #93a59c;
+    --line: #2a3a33;
+    --accent: #e8935f;
+    --mat: #17241f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a16;
+  --ink: #e5ece8;
+  --mute: #93a59c;
+  --line: #2a3a33;
+  --accent: #e8935f;
+  --mat: #17241f;
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.65; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Header ---------- */
+header { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 20px 0; border-bottom: 1px solid var(--line); }
+header b { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand img { display: block; width: 48px; height: 48px; object-fit: cover; border-radius: 50%; }
+nav a { margin-left: 22px; text-decoration: none; color: var(--mute); font-size: .95rem; }
+nav a:hover { color: var(--accent); }
+
+/* ---------- Hero ---------- */
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding: 64px 0; }
+.hero h1 { font-size: clamp(2.6rem, 7vw, 5.2rem); line-height: 1.05; letter-spacing: -.02em; margin-bottom: 18px; }
+.hero p { color: var(--mute); max-width: 30em; margin: 0 0 8px; font-size: 1.05rem; }
+.hero .when { color: var(--accent); font-weight: 600; margin: 18px 0 22px; }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-block; padding: 11px 22px; border: 1px solid var(--ink); text-decoration: none; font-weight: 500; }
+.btn:hover { background: var(--ink); color: var(--bg); }
+
+/* ---------- Frames and artwork ---------- */
+.frame { background: var(--mat); padding: 14px; border: 1px solid var(--line); }
+.art { width: 100%; background-size: cover; background-position: center; position: relative; }
+.hero-frame { min-width: 0; }
+.hero-image { display: block; width: 100%; height: auto; object-fit: contain; }
+.art::after { content: "Your image here"; position: absolute; right: 8px; bottom: 8px; font-size: .7rem; color: #fff; opacity: .8; }
+.art.has::after { display: none; }
+.art.exhibition-poster { background-color: var(--mat); }
+
+/* ---------- Sections ---------- */
+section { border-top: 1px solid var(--line); padding: 56px 0; }
+section > h2 { font-size: 2rem; margin-bottom: 6px; }
+section > .sub { color: var(--mute); margin: 0 0 32px; max-width: 36em; }
+
+/* ---------- Exhibitions list ---------- */
+.ex { display: grid; grid-template-columns: 150px 1fr auto; gap: 20px; align-items: baseline; padding: 18px 0; border-top: 1px solid var(--line); cursor: pointer; }
+.ex.last { border-bottom: 1px solid var(--line); }
+.ex[hidden] { display: none; }
+.ex .st { font-weight: 600; color: var(--accent); }
+.ex.past .st { color: var(--mute); }
+.ex h3 { font-size: 1.4rem; }
+.ex:hover h3 { color: var(--accent); }
+.ex span.d { color: var(--mute); }
+
+/* pagination */
+.pager { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+.pager button { font: inherit; background: none; color: var(--ink); border: 1px solid var(--line); padding: 6px 14px; cursor: pointer; }
+.pager button:not(:disabled):hover { border-color: var(--accent); }
+.pager button[aria-current] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.pager button:disabled { color: var(--mute); cursor: default; opacity: .6; }
+.pager button[aria-current]:disabled { color: var(--bg); opacity: 1; }
+.empty { margin: 0; padding: 24px 0; text-align: center; color: var(--mute); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+/* ---------- Featured works ---------- */
+.wall { columns: 3 250px; column-gap: 26px; }
+.work { break-inside: avoid; margin: 0 0 26px; cursor: pointer; background: none; border: 0; padding: 0; width: 100%; text-align: left; font: inherit; color: inherit; display: block; }
+.work:hover .frame { border-color: var(--accent); }
+.cap { padding: 10px 2px 0; }
+.cap b { font-weight: 600; display: block; }
+.cap span { color: var(--mute); font-size: .9rem; }
+
+/* ---------- Artists ---------- */
+.artists { columns: 3 200px; column-gap: 26px; list-style: none; margin: 0; padding: 0; }
+.artists li { padding: 5px 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+
+/* ---------- About, visit ---------- */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.two p { color: var(--mute); margin: 0 0 12px; max-width: 34em; }
+dl { margin: 0; display: grid; grid-template-columns: 110px 1fr; gap: 8px 20px; }
+dt { font-weight: 600; }
+dd { margin: 0; color: var(--mute); }
+
+/* ---------- Footer and message form ---------- */
+footer { border-top: 1px solid var(--line); padding: 40px 0; color: var(--mute); font-size: .9rem; }
+footer .msg { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; padding-bottom: 32px; }
+footer h2 { font-size: 1.8rem; color: var(--ink); margin-bottom: 8px; }
+footer p { margin: 0; max-width: 30em; }
+footer .copy { border-top: 1px solid var(--line); padding-top: 20px; }
+#msgform { display: grid; gap: 14px; }
+#msgform label { display: grid; gap: 4px; font-weight: 500; color: var(--ink); font-size: .9rem; }
+#msgform input, #msgform textarea { font: inherit; color: var(--ink); background: var(--mat); border: 1px solid var(--line); padding: 10px 12px; width: 100%; }
+#msgform input:focus, #msgform textarea:focus { border-color: var(--accent); }
+#msgform .btn { justify-self: start; font: inherit; font-weight: 500; background: none; color: var(--ink); cursor: pointer; }
+#msgform .btn:hover { background: var(--ink); color: var(--bg); }
+#mnote { min-height: 1.4em; }
+#mnote.err { color: #d64545; }
+#msgform .email-fallback { color: var(--mute); font-size: .9rem; }
+#msgform .email-fallback a { color: var(--accent); }
+
+/* ---------- Popups ---------- */
+dialog { border: 0; padding: 0; background: var(--mat); color: var(--ink); max-width: min(92vw, 820px); width: 100%; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
+dialog::backdrop { background: rgba(8, 12, 11, .72); }
+dialog .art { max-height: 70vh; min-height: 280px; }
+dialog .art[hidden] { display: none; }
+dialog .meta { padding: 18px 22px 22px; }
+dialog h3 { font-size: 1.6rem; }
+dialog p { margin: 6px 0 0; color: var(--mute); }
+dialog button { position: absolute; top: 10px; right: 10px; background: var(--bg); color: var(--ink); border: 1px solid var(--line); width: 38px; height: 38px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; }
+#extag { margin: 0; color: var(--accent); font-weight: 600; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+#exdate { font-weight: 500; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 760px) {
+  .hero, .two { grid-template-columns: 1fr; gap: 28px; }
+  .ex { grid-template-columns: 1fr; gap: 4px; }
+  footer .msg { grid-template-columns: 1fr; }
+  nav a { margin: 0 14px 0 0; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Drishti Gallery — Exhibitions and Artists</title>
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><img src="drishti.png" alt="Drishti Gallery logo"><b>Drishti Gallery</b></div>
+    <nav><a href="#exhibitions">Exhibitions</a><a href="#works">Works</a><a href="#artists">Artists</a><a href="#about">About</a><a href="#visit">Visit</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Legacy</h1>
+      <p>Unique works by Pre-Independence, Modern Masters and Contemporary Voices.</p>
+      <div class="when">November 5 – 12, 2026</div>
+      <a class="btn" href="#works">View the works</a>
+    </div>
+    <div class="frame hero-frame"><img class="hero-image" id="heroart" src="legacy.png" alt="Legacy exhibition artwork"></div>
+  </div>
+
+  <section id="exhibitions">
+    <h2>Exhibitions</h2>
+    <p class="sub">What is on now, what is coming, and what we have shown before. Select an exhibition to read more.</p>
+    <div class="ex" data-image="Handcraft.png"><div class="st">Upcoming</div><h3>Handcraft</h3><span class="d">Christmas – 2026</span></div>
+    <div class="ex"><div class="st">Upcoming</div><h3>Modern to Contemporary</h3><span class="d">16 – 20 Nov 2026</span></div>
+    <div class="ex" data-image="legacy.png"><div class="st">On now</div><h3>Legacy</h3><span class="d">5 – 12 Nov 2026</span></div>
+    <div class="ex past" data-image="uploads/Summer Collection.png"><div class="st">Past</div><h3>Summer Collections</h3><span class="d">Sep – Oct 2026</span></div>
+    <div class="ex past" data-image="uploads/The Earthbound Divine.png"><div class="st">Past</div><h3>The Earthbound Divine</h3><span class="d">May – Jun 2025</span></div>
+    <div class="ex past" data-image="uploads/Monsoon Reverie.png"><div class="st">Past</div><h3>Monsoon Reverie</h3><span class="d">Jun 2025</span></div>
+    <div class="ex past" data-image="uploads/स्वर्णिम Swarnim.png"><div class="st">Past</div><h3>स्वर्णिम Swarnim</h3><span class="d">Apr 2025</span></div>
+    <div class="ex past" data-image="uploads/comic.png"><div class="st">Past</div><h3>Comics</h3><span class="d">Mar 2025</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>Colours of the Delta</h3><span class="d">Dec 2024</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>Echoes in Ink</h3><span class="d">Nov 2024</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>The Quiet Hour</h3><span class="d">Oct 2024</span></div>
+    <div class="ex past" data-image="uploads/Fragments of Light.png"><div class="st">Past</div><h3>Fragments of Light</h3><span class="d">Sep 2024</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>Pigments and Parables</h3><span class="d">Dec 2023</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>Lines of Memory</h3><span class="d">Oct – Nov 2023</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>Whispers in Terracotta</h3><span class="d">Aug 2023</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>The Weaver’s Palette</h3><span class="d">Mar 2023</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>Studio Dialogues</h3><span class="d">Dec 2022</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>Rivers of Colour</h3><span class="d">Oct – Nov 2022</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>Shadows and Gold</h3><span class="d">Jul 2022</span></div>
+    <div class="ex past"><div class="st">Past</div><h3>Canvas Chronicles</h3><span class="d">Mar 2022</span></div>
+    <p class="empty" id="empty" hidden>No exhibitions on this page yet.</p>
+    <div class="pager" id="pager" role="navigation" aria-label="Exhibition pages"></div>
+  </section>
+
+  <section id="works">
+    <h2>Featured works</h2>
+    <p class="sub">Gallery preview — sample artwork cards are shown until you add the real artwork and artist details.</p>
+    <div class="wall" id="wall"></div>
+  </section>
+
+  <section id="artists">
+    <h2>Artists</h2>
+    <p class="sub">The artists we represent and exhibit.</p>
+    <ul class="artists">
+      <li>Arjun Mukherjee</li><li>Priya Sengupta</li><li>Rohan Banerjee</li><li>Ananya Das</li>
+      <li>Vikram Chatterjee</li><li>Meera Iyer</li><li>Sandeep Roy</li><li>Sima Niakan</li>
+      <li>Kavita Rao</li><li>Aditya Ghosh</li><li>Nandini Bose</li><li>Ishaan Sharma</li>
+    </ul>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="two" style="margin-top:24px">
+      <p>Drishti means sight, but it also means vision: the way a person chooses to see. Every painting is a conversation someone started long ago, still waiting for someone to answer. Here, works from before Independence sit beside modern masters and contemporary voices, so you can feel the whole river of art at once.</p>
+      <p>Drishti Gallery was founded by Dhrubojyoti Chatterjee, a graphic design graduate who once taught at a university. At just 20 he began running an art magazine called Monkey Art, and he kept it going for five years. Now, after 20 years in the industry and with a lasting love for animation, he is looking for fresh artists, with digital painting and comics at the top of his list. Come as you are. Leave carrying a story of your own.</p>
+    </div>
+  </section>
+
+  <section id="visit">
+    <h2>Visit and contact</h2>
+    <dl style="margin-top:24px">
+      <dt>Address</dt><dd>Plot 14, Action Area II, New Town, Kolkata 700156, West Bengal, India</dd>
+      <dt>Hours</dt><dd>Monday to Saturday, 11:00 – 19:00</dd>
+      <dt>Phone</dt><dd>+91 90733 99879</dd>
+    </dl>
+  </section>
+
+  <footer id="contact">
+    <div class="msg">
+      <div>
+        <h2>Send us a message</h2>
+        <p>Questions about an exhibition or a work? Write to us and we will reply as soon as we can.</p>
+      </div>
+      <form id="msgform" action="https://formspree.io/f/xrpqzkjn" method="POST">
+        <input type="text" name="_gotcha" style="display:none">
+        <label>Your name<input id="mname" name="name" autocomplete="name" required></label>
+        <label>Your email<input id="memail" name="email" type="email" autocomplete="email" required></label>
+        <label>Message<textarea id="mtext" name="message" rows="5" required></textarea></label>
+        <button class="btn" type="submit">Send message</button>
+        <p class="email-fallback">Use this form to contact the gallery.</p>
+        <p id="mnote" role="status"></p>
+      </form>
+    </div>
+    <p class="copy">© 2026 Drishti Gallery. All rights reserved.</p>
+  </footer>
+</div>
+
+<dialog id="exdlg" aria-label="Exhibition details">
+  <button type="button" id="exclose" aria-label="Close">×</button>
+  <div class="art" id="exart" style="aspect-ratio:5/3" hidden></div>
+  <div class="meta"><p id="extag"></p><h3 id="extitle"></h3><p id="exdate"></p><p id="exdesc"></p></div>
+</dialog>
+
+<dialog id="dlg" aria-label="Artwork">
+  <button type="button" id="close" aria-label="Close">×</button>
+  <div class="art" id="dart"></div>
+  <div class="meta"><h3 id="dt"></h3><p id="dm"></p></div>
+</dialog>
+
+<script>
+// Gallery items are loaded from gallery.json.
+function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w.g;if(w.img)el.classList.add("has")}
+(function(){
+  var PER=4,rows=[].slice.call(document.querySelectorAll("#exhibitions .ex")),pg=document.getElementById("pager"),cur=1,n=Math.max(5,Math.ceil(rows.length/PER));
+  function btn(label,page,dis,on,aria){var b=document.createElement("button");b.type="button";b.textContent=label;b.disabled=dis;if(on)b.setAttribute("aria-current","page");if(aria)b.setAttribute("aria-label",aria);b.onclick=function(){cur=page;show()};return b}
+  function show(){
+    var s=(cur-1)*PER,e=s+PER,last=null;
+    rows.forEach(function(r,i){var v=i>=s&&i<e;r.hidden=!v;r.classList.remove("last");if(v)last=r});
+    if(last)last.classList.add("last");
+    document.getElementById("empty").hidden=s<rows.length;
+    pg.innerHTML="";
+    pg.appendChild(btn("Previous",cur-1,cur===1,false));
+    for(var p=1;p<=n;p++)pg.appendChild(btn(String(p),p,p===cur,p===cur,"Page "+p));
+    pg.appendChild(btn("Next",cur+1,cur===n,false));
+  }
+  show();
+})();
+(function(){
+  var T=[
+    {n:"Digital Comics",d:"Stories told panel by panel on screen. This exhibition follows how artists build characters, pace a page, and use colour and lettering to carry a reader from one frame to the next.",s:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360"><rect width="600" height="360" fill="#2d3fd3"/><rect x="30" y="30" width="250" height="150" fill="#f9faf8"/><rect x="300" y="30" width="270" height="70" fill="#f9faf8"/><rect x="300" y="115" width="270" height="65" fill="#ffd166"/><rect x="30" y="195" width="540" height="135" fill="#f9faf8"/><ellipse cx="150" cy="95" rx="70" ry="38" fill="#2d3fd3"/><path d="M120 125l-14 28 40-20z" fill="#2d3fd3"/><circle cx="440" cy="262" r="46" fill="#ef476f"/></svg>'},
+    {n:"Digital Painting",d:"Painting without a canvas. Layers, light and texture are built with a pen and a tablet, and the works show how classic ideas of colour and composition live on in a new medium.",s:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6f5c"/><stop offset="1" stop-color="#a8d5c2"/></linearGradient></defs><rect width="600" height="360" fill="url(#g)"/><circle cx="460" cy="90" r="50" fill="#f7e3a1"/><path d="M-10 250C120 170 220 330 330 240S520 170 620 230V380H-10Z" fill="#e0a526" opacity=".85"/><path d="M-10 300C140 240 250 360 380 290S540 260 620 300V380H-10Z" fill="#c8553d" opacity=".9"/></svg>'},
+    {n:"Illustration",d:"Images that tell a story or hold an idea. From book covers to editorial drawings, this exhibition looks at how a single picture can say what pages of text cannot.",s:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360"><rect width="600" height="360" fill="#f2c9a0"/><circle cx="130" cy="110" r="46" fill="#6b3fa0"/><circle cx="480" cy="250" r="56" fill="#ef476f" opacity=".85"/><path d="M300 330C220 250 220 120 300 40C380 120 380 250 300 330Z" fill="#1f6f5c"/><path d="M300 330V70" stroke="#f9faf8" stroke-width="6" fill="none"/></svg>'}
+  ];
+  var dlg=document.getElementById("exdlg"),art=document.getElementById("exart");
+  [].slice.call(document.querySelectorAll("#exhibitions .ex")).forEach(function(r,i){
+    var t=T[i%3];
+    r.tabIndex=0;r.setAttribute("role","button");
+    function open(){
+      var title=r.querySelector("h3").textContent;
+      var image=r.getAttribute("data-image");
+      art.hidden=!image;
+      art.style.background=image?'url("'+encodeURI(image)+'") center/contain no-repeat':"none";
+      art.classList.toggle("has",Boolean(image));
+      art.classList.toggle("exhibition-poster",image==="legacy.png"||image==="Handcraft.png");
+      document.getElementById("extag").textContent=t.n;
+      document.getElementById("extitle").textContent=r.querySelector("h3").textContent;
+      document.getElementById("exdate").textContent=r.querySelector(".st").textContent+" · "+r.querySelector(".d").textContent;
+      document.getElementById("exdesc").textContent=t.d;
+      dlg.showModal();
+    }
+    r.addEventListener("click",open);
+    r.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}});
+  });
+  document.getElementById("exclose").onclick=function(){dlg.close()};
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+})();
+
+var wall=document.getElementById("wall"),dlg=document.getElementById("dlg");
+fetch("gallery.json").then(function(r){if(!r.ok)throw new Error("Gallery data not found");return r.json()}).then(function(WORKS){WORKS.forEach(function(w){
+  var b=document.createElement("button");b.type="button";b.className="work";
+  b.innerHTML='<div class="frame"><div class="art"></div></div><div class="cap"><b></b><span></span></div>';
+  var a=b.querySelector(".art");a.style.aspectRatio=w.r;paint(a,w);
+  b.querySelector("b").textContent=w.title;
+  b.querySelector("span").textContent=w.artist;
+  b.onclick=function(){
+    var d=document.getElementById("dart");d.className="art";d.style.aspectRatio=w.r;paint(d,w);
+    document.getElementById("dt").textContent=w.title;
+    document.getElementById("dm").textContent=w.artist+", "+w.d;
+    dlg.showModal();
+  };
+  wall.appendChild(b);
+});
+}).catch(function(){wall.textContent="Gallery works could not be loaded.";});
+document.getElementById("close").onclick=function(){dlg.close()};
+dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+</script>
+</body>
+</html>
