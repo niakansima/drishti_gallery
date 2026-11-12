@@ -21,24 +21,24 @@
       <div class="when">November 5 – 12, 2026</div>
       <a class="btn" href="#works">View the works</a>
     </div>
-    <div class="frame"><div class="art" id="heroart" style="aspect-ratio:4/5"></div></div>
+    <div class="frame hero-frame"><img class="hero-image" id="heroart" src="legacy.png" alt="Legacy exhibition artwork"></div>
   </div>
 
   <section id="exhibitions">
     <h2>Exhibitions</h2>
     <p class="sub">What is on now, what is coming, and what we have shown before. Select an exhibition to read more.</p>
-    <div class="ex"><div class="st">Upcoming</div><h3>Handcraft</h3><span class="d">Christmas – 2026</span></div>
+    <div class="ex" data-image="Handcraft.png"><div class="st">Upcoming</div><h3>Handcraft</h3><span class="d">Christmas – 2026</span></div>
     <div class="ex"><div class="st">Upcoming</div><h3>Modern to Contemporary</h3><span class="d">16 – 20 Nov 2026</span></div>
-    <div class="ex"><div class="st">On now</div><h3>Legacy</h3><span class="d">5 – 12 Nov 2026</span></div>
-    <div class="ex past"><div class="st">Past</div><h3>Summer Collections</h3><span class="d">Sep – Oct 2026</span></div>
-    <div class="ex past"><div class="st">Past</div><h3>The Earthbound Divine</h3><span class="d">May – Jun 2025</span></div>
-    <div class="ex past"><div class="st">Past</div><h3>Monsoon Reverie</h3><span class="d">Jun 2025</span></div>
-    <div class="ex past"><div class="st">Past</div><h3>स्वर्णिम Swarnim</h3><span class="d">Apr 2025</span></div>
-    <div class="ex past"><div class="st">Past</div><h3>Comics</h3><span class="d">Mar 2025</span></div>
+    <div class="ex" data-image="legacy.png"><div class="st">On now</div><h3>Legacy</h3><span class="d">5 – 12 Nov 2026</span></div>
+    <div class="ex past" data-image="uploads/Summer Collection.png"><div class="st">Past</div><h3>Summer Collections</h3><span class="d">Sep – Oct 2026</span></div>
+    <div class="ex past" data-image="uploads/The Earthbound Divine.png"><div class="st">Past</div><h3>The Earthbound Divine</h3><span class="d">May – Jun 2025</span></div>
+    <div class="ex past" data-image="uploads/Monsoon Reverie.png"><div class="st">Past</div><h3>Monsoon Reverie</h3><span class="d">Jun 2025</span></div>
+    <div class="ex past" data-image="uploads/स्वर्णिम Swarnim.png"><div class="st">Past</div><h3>स्वर्णिम Swarnim</h3><span class="d">Apr 2025</span></div>
+    <div class="ex past" data-image="uploads/comic.png"><div class="st">Past</div><h3>Comics</h3><span class="d">Mar 2025</span></div>
     <div class="ex past"><div class="st">Past</div><h3>Colours of the Delta</h3><span class="d">Dec 2024</span></div>
     <div class="ex past"><div class="st">Past</div><h3>Echoes in Ink</h3><span class="d">Nov 2024</span></div>
     <div class="ex past"><div class="st">Past</div><h3>The Quiet Hour</h3><span class="d">Oct 2024</span></div>
-    <div class="ex past"><div class="st">Past</div><h3>Fragments of Light</h3><span class="d">Sep 2024</span></div>
+    <div class="ex past" data-image="uploads/Fragments of Light.png"><div class="st">Past</div><h3>Fragments of Light</h3><span class="d">Sep 2024</span></div>
     <div class="ex past"><div class="st">Past</div><h3>Pigments and Parables</h3><span class="d">Dec 2023</span></div>
     <div class="ex past"><div class="st">Past</div><h3>Lines of Memory</h3><span class="d">Oct – Nov 2023</span></div>
     <div class="ex past"><div class="st">Past</div><h3>Whispers in Terracotta</h3><span class="d">Aug 2023</span></div>
@@ -106,7 +106,7 @@
 
 <dialog id="exdlg" aria-label="Exhibition details">
   <button type="button" id="exclose" aria-label="Close">×</button>
-  <div class="art" id="exart" style="aspect-ratio:5/3"></div>
+  <div class="art" id="exart" style="aspect-ratio:5/3" hidden></div>
   <div class="meta"><p id="extag"></p><h3 id="extitle"></h3><p id="exdate"></p><p id="exdesc"></p></div>
 </dialog>
 
@@ -146,12 +146,11 @@ function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w
     r.tabIndex=0;r.setAttribute("role","button");
     function open(){
       var title=r.querySelector("h3").textContent;
-      var isLegacy=/^legacy$/i.test(title), isHandcraft=/^handcraft$/i.test(title);
-      var exhibitImages={"Summer Collections":"Summer Collection.png","The Earthbound Divine":"The Earthbound Divine.png","Monsoon Reverie":"Monsoon Reverie.png","Comics":"comic.png","स्वर्णिम Swarnim":"स्वर्णिम Swarnim.png","Fragments of Light":"Fragments of Light.png"};
-      var exhibitFile=exhibitImages[title];
-      var exhibitPhoto=exhibitFile?'url("uploads/'+encodeURIComponent(exhibitFile)+'") center/contain no-repeat':null;
-      art.style.background=exhibitPhoto||(isLegacy?'url("legacy.png") center/contain no-repeat':isHandcraft?'url("handcraft.png") center/contain no-repeat':"url('data:image/svg+xml,"+encodeURIComponent(t.s)+"') center/cover");
-      art.classList.toggle("exhibition-poster",isLegacy||isHandcraft);
+      var image=r.getAttribute("data-image");
+      art.hidden=!image;
+      art.style.background=image?'url("'+encodeURI(image)+'") center/contain no-repeat':"none";
+      art.classList.toggle("has",Boolean(image));
+      art.classList.toggle("exhibition-poster",image==="legacy.png"||image==="Handcraft.png");
       document.getElementById("extag").textContent=t.n;
       document.getElementById("extitle").textContent=r.querySelector("h3").textContent;
       document.getElementById("exdate").textContent=r.querySelector(".st").textContent+" · "+r.querySelector(".d").textContent;
@@ -165,18 +164,17 @@ function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w
   dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
 })();
 
-var heroArt=document.getElementById("heroart");heroArt.style.background="url('legacy.png') center/contain no-repeat";heroArt.classList.add("exhibition-poster");
 var wall=document.getElementById("wall"),dlg=document.getElementById("dlg");
-fetch("gallery.json?v=5").then(function(r){if(!r.ok)throw new Error("Gallery data not found");return r.json()}).then(function(data){var WORKS=Array.isArray(data)?data:data.works;WORKS.forEach(function(w){
+fetch("gallery.json").then(function(r){if(!r.ok)throw new Error("Gallery data not found");return r.json()}).then(function(WORKS){WORKS.forEach(function(w){
   var b=document.createElement("button");b.type="button";b.className="work";
   b.innerHTML='<div class="frame"><div class="art"></div></div><div class="cap"><b></b><span></span></div>';
   var a=b.querySelector(".art");a.style.aspectRatio=w.r;paint(a,w);
   b.querySelector("b").textContent=w.title;
-  var artist=b.querySelector("span");if(w.artist&&w.artist.trim()!=="Artist not listed")artist.textContent=w.artist;else artist.remove();
+  b.querySelector("span").textContent=w.artist;
   b.onclick=function(){
     var d=document.getElementById("dart");d.className="art";d.style.aspectRatio=w.r;paint(d,w);
     document.getElementById("dt").textContent=w.title;
-    document.getElementById("dm").textContent=((w.artist||"").trim()&&w.artist.trim()!=="Artist not listed"?w.artist.trim()+", ":"")+w.d;
+    document.getElementById("dm").textContent=w.artist+", "+w.d;
     dlg.showModal();
   };
   wall.appendChild(b);
