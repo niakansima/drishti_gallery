@@ -17,7 +17,7 @@
   <div class="hero">
     <div>
       <h1>Legacy</h1>
-      <p>Unique works by Pre-Independence, Modern Masters and Contemporary Voices.</p>
+      <p>Explore current and upcoming exhibitions at Drishti Gallery.</p>
       <div class="when">November 5 – 12, 2026</div>
       <a class="btn" href="#works">View the works</a>
     </div>
@@ -119,6 +119,8 @@
 <script>
 // Gallery items are loaded from gallery.json.
 function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w.g;if(w.img)el.classList.add("has")}
+var exhibitionImages={"Legacy":"legacy.png","Handcraft":"handcraft.png","Summer Collections":"uploads/Summer Collection.png","The Earthbound Divine":"uploads/The Earthbound Divine.png","Monsoon Reverie":"uploads/Monsoon Reverie.png","Comics":"uploads/comic.png","स्वर्णिम Swarnim":"uploads/स्वर्णिम Swarnim.png","Fragments of Light":"uploads/Fragments of Light.png"};
+function exhibitionImage(title){var path=exhibitionImages[title];return path?path.split("/").map(encodeURIComponent).join("/"):null}
 (function(){
   var PER=4,rows=[].slice.call(document.querySelectorAll("#exhibitions .ex")),pg=document.getElementById("pager"),cur=1,n=Math.max(5,Math.ceil(rows.length/PER));
   function localDate(value){var p=value.split("-");return new Date(Number(p[0]),Number(p[1])-1,Number(p[2]))}
@@ -128,6 +130,19 @@ function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w
     if(today<start)status="Upcoming";else if(today>end)status="Past";else status="On now";
     label.textContent=status;row.classList.toggle("past",status==="Past");
   });
+  var currentRow=rows.filter(function(row){return row.querySelector(".st").textContent==="On now"})[0];
+  var nextRows=rows.filter(function(row){return row.querySelector(".st").textContent==="Upcoming"}).sort(function(a,b){return localDate(a.getAttribute("data-start"))-localDate(b.getAttribute("data-start"))});
+  var heroRow=currentRow||nextRows[0]||rows.slice().sort(function(a,b){return localDate(b.getAttribute("data-end"))-localDate(a.getAttribute("data-end"))})[0];
+  var hero=document.querySelector(".hero"),heroTitle=hero.querySelector("h1"),heroDate=hero.querySelector(".when"),heroFrame=hero.querySelector(".frame"),heroArt=document.getElementById("heroart");
+  if(heroRow){
+    var heroName=heroRow.querySelector("h3").textContent,heroImage=exhibitionImage(heroName);
+    heroTitle.textContent=heroName;
+    heroDate.textContent=heroRow.querySelector(".st").textContent+" · "+heroRow.querySelector(".d").textContent;
+    hero.querySelector("p").textContent="Explore this exhibition at Drishti Gallery.";
+    heroFrame.hidden=!heroImage;hero.classList.toggle("no-image",!heroImage);
+    heroArt.style.background=heroImage?'url("'+heroImage+'") center/contain no-repeat':"none";
+    heroArt.classList.toggle("exhibition-poster",!!heroImage);
+  }else{hero.hidden=true}
 
   function btn(label,page,dis,on,aria){var b=document.createElement("button");b.type="button";b.textContent=label;b.disabled=dis;if(on)b.setAttribute("aria-current","page");if(aria)b.setAttribute("aria-label",aria);b.onclick=function(){cur=page;show()};return b}
   function show(){
@@ -154,12 +169,10 @@ function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w
     r.tabIndex=0;r.setAttribute("role","button");
     function open(){
       var title=r.querySelector("h3").textContent;
-      var isLegacy=/^legacy$/i.test(title), isHandcraft=/^handcraft$/i.test(title);
-      var exhibitImages={"Summer Collections":"Summer Collection.png","The Earthbound Divine":"The Earthbound Divine.png","Monsoon Reverie":"Monsoon Reverie.png","Comics":"comic.png","स्वर्णिम Swarnim":"स्वर्णिम Swarnim.png","Fragments of Light":"Fragments of Light.png"};
-      var exhibitFile=exhibitImages[title];
-      var exhibitPhoto=exhibitFile?'url("uploads/'+encodeURIComponent(exhibitFile)+'") center/contain no-repeat':null;
-      art.style.background=exhibitPhoto||(isLegacy?'url("legacy.png") center/contain no-repeat':isHandcraft?'url("handcraft.png") center/contain no-repeat':"url('data:image/svg+xml,"+encodeURIComponent(t.s)+"') center/cover");
-      art.classList.toggle("exhibition-poster",isLegacy||isHandcraft);
+      var exhibitFile=exhibitionImage(title);
+      art.hidden=!exhibitFile;
+      art.style.background=exhibitFile?'url("'+exhibitFile+'") center/contain no-repeat':"none";
+      art.classList.toggle("exhibition-poster",!!exhibitFile);
       document.getElementById("extag").textContent=t.n;
       document.getElementById("extitle").textContent=r.querySelector("h3").textContent;
       document.getElementById("exdate").textContent=r.querySelector(".st").textContent+" · "+r.querySelector(".d").textContent;
@@ -173,7 +186,6 @@ function paint(el,w){el.style.background=w.img?"url('"+w.img+"') center/cover":w
   dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
 })();
 
-var heroArt=document.getElementById("heroart");heroArt.style.background="url('legacy.png') center/contain no-repeat";heroArt.classList.add("exhibition-poster");
 var wall=document.getElementById("wall"),dlg=document.getElementById("dlg");
 fetch("gallery.json?v=5").then(function(r){if(!r.ok)throw new Error("Gallery data not found");return r.json()}).then(function(data){var WORKS=Array.isArray(data)?data:data.works;WORKS.forEach(function(w){
   var b=document.createElement("button");b.type="button";b.className="work";
